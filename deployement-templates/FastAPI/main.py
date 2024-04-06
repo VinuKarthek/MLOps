@@ -74,11 +74,14 @@ async def inference(data_in: Model):
 async def batch_inference(csv_file: UploadFile = File(...)):
     print('Processing ', csv_file.filename)
     df = pd.read_csv(csv_file.file)                         #Read the batch file
-    df.drop(['quality'],axis =1, inplace = True)   
+    
+    #Remove Quality Columns from dataset
+    if 'quality' in df.columns:
+        df.drop(['quality'],axis =1, inplace = True)   
     prediction = model.predict(df)   
-    print(prediction)                   
+    batch_result = prediction.tolist()               
     return {
-        'prediction': prediction,
+        'batch_prediction': batch_result,
     }
 
 if __name__=="__main__":
