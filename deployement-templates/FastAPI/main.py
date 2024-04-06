@@ -40,6 +40,16 @@ model = load_model(f'models/{MODEL_NAME}_v{MODEL_REV}.pkl')
 
 app = FastAPI()
 
+@app.get('/')
+async def index():
+    # Index Page - Landing Page for your model
+    app.mount("/", StaticFiles(directory="landing", html = True), name="landing")
+    return FileResponse('landing/index.html')
+
+@app.get('/favicon.ico')
+async def favicon():
+    #Favicon for your model page
+    return FileResponse('landing/src/images/favicon.png')
 
 @app.post(f"/predict/{MODEL_NAME}", description=f'Retuns Prediction & Probability (for Classification) using Model - "{MODEL_NAME}_v{MODEL_REV}"')
 async def inference(data_in: Model):
