@@ -31,4 +31,4 @@ jobs:
           context: ./deployment-templates/FastAPI/
           file: ./deployment-templates/FastAPI/Dockerfile
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/FastAPI:${{ github.sha }},${{ secrets.DOCKERHUB_USERNAME }}/FastAPI:latest
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/fastapi:${{ github.sha }},${{ secrets.DOCKERHUB_USERNAME }}/fastapi:latest
