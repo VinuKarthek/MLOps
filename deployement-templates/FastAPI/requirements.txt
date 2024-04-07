@@ -3,8 +3,8 @@ uvicorn==0.17.6
 typing
 pydantic==1.9.1
 pickleshare
-pandas==1.4.3
-numpy==1.23.1
-sckitlearn
+pandas
+numpy
+scikit-learn
 Pillow
 python-multipart #reqeust to get files
