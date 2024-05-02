@@ -28,7 +28,7 @@ jobs:
         name: Build and push
         uses: docker/build-push-action@v4
         with:
-          context: ./deployement-templates/FastAPI/
-          file: ./deployement-templates/FastAPI/Dockerfile
+          context: ./model-serving-templates/FastAPI/
+          file: ./model-serving-templates/FastAPI/Dockerfile
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/fastapi:${{ github.sha }},${{ secrets.DOCKERHUB_USERNAME }}/fastapi:latest
