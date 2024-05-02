@@ -34,7 +34,7 @@ RUN curl https://dlcdn.apache.org/spark/spark-3.3.1/spark-3.3.1-bin-hadoop3.tgz 
 FROM spark-base as pyspark
 
 # Install python deps
-COPY requirements/requirements.txt .
+COPY requirements.txt .
 RUN pip3 install -r requirements.txt
 
 ENV PATH="/opt/spark/sbin:/opt/spark/bin:${PATH}"
