@@ -31,4 +31,4 @@ jobs:
           context: ./docker-deployments/apache-spark/
           file: ./docker-deployments/apache-spark/Dockerfile
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/fastapi:${{ github.sha }},${{ secrets.DOCKERHUB_USERNAME }}/apache-spark:latest
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/apache-spark:${{ github.sha }},${{ secrets.DOCKERHUB_USERNAME }}/apache-spark:latest
