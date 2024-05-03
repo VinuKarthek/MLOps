@@ -1,10 +1,11 @@
-name: CI | Docker Image Build | FastAPI Model Serve
+name: FastAPI Model Serve | Docker Image Build | CI 
 
 on:
   push:
     branches:
       - 'main'
     paths:
+      - '.github/workflows/FastAPI-docker-image-CI.yml'
       - 'model-serving-templates/**'
 
 jobs:
