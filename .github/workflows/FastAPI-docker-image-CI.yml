@@ -1,9 +1,11 @@
-name: Docker Image CI
+name: CI | Docker Image Build | FastAPI Model Serve
 
 on:
   push:
     branches:
       - 'main'
+    paths:
+      - 'model-serving-templates/**'
 
 jobs:
   docker:
