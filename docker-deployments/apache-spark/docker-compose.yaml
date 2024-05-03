@@ -4,7 +4,7 @@ services:
   spark-master:
     container_name: spark-master
     build: .
-    image: da-spark-image
+    image: vinukarthek/apache-spark:latest
     entrypoint: ['./entrypoint.sh', 'master']
     healthcheck:
       test: [ "CMD", "curl", "-f", "http://localhost:8080" ]
@@ -15,20 +15,20 @@ services:
       - ./book_data:/opt/spark/data
       - ./spark_apps:/opt/spark/apps
       - spark-logs:/opt/spark/spark-events
-    env_file:
-      - .env.spark
+    environment:
+      - SPARK_NO_DAEMONIZE=true
     ports:
       - '9090:8080'
       - '7077:7077'
 
   spark-worker:
     container_name: spark-worker
-    image: da-spark-image
+    image: vinukarthek/apache-spark:latest
     entrypoint: ['./entrypoint.sh', 'worker']
     depends_on:
       - spark-master
-    env_file:
-      - .env.spark
+    environment:
+      - SPARK_NO_DAEMONIZE=true
     volumes:
       - ./book_data:/opt/spark/data
       - ./spark_apps:/opt/spark/apps
@@ -36,12 +36,12 @@ services:
 
   spark-history-server:
     container_name: spark-history
-    image: da-spark-image
+    image: vinukarthek/apache-spark:latest
     entrypoint: ['./entrypoint.sh', 'history']
     depends_on:
       - spark-master
-    env_file:
-      - .env.spark
+    environment:
+      - SPARK_NO_DAEMONIZE=true
     volumes:
       - spark-logs:/opt/spark/spark-events
     ports:
